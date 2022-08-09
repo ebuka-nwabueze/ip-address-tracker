@@ -8,14 +8,14 @@ import { GetIpResponse } from "./types/types";
 function App() {
   const [mapData, setMapData] = useState<GetIpResponse | null>(null);
   const [loading, setLoading] = useState(true);
-  const [searchInput, setSearchInput] = useState("8.8.8.8");
+  const [searchInput, setSearchInput] = useState("");
   const [error, setError] = useState(false);
 
-  const getIpData = async () => {
+  const getIpData = async (searchString: string) => {
     try {
-      const data = (await getIp(searchInput)) as GetIpResponse;
+      const data = (await getIp(searchString)) as GetIpResponse;
       if (data) setLoading(false);
-      console.log(data);
+      // console.log(data);
       setMapData(data);
     } catch (error) {
       setError(true);
@@ -25,14 +25,21 @@ function App() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await getIpData();
-    console.log(mapData);
-    console.log("submit");
+    setLoading(true)
+    setMapData(null)
+    await getIpData(searchInput);
+    // console.log(mapData);
+
   };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setSearchInput(e.target.value)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
-      await getIpData();
+      await getIpData("");
     };
     // fetchData();
     // eslint-disable-next-line
@@ -53,6 +60,8 @@ function App() {
               id="input"
               name="input"
               className="input-field"
+              onChange={handleChange}
+              value={"" || searchInput}
             />
             <button className="btn">
               <HiOutlineChevronRight

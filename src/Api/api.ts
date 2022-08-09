@@ -7,9 +7,10 @@ const API_URL = `https://geo.ipify.org/api/v2/country?apiKey=${API_KEY}&`
 
 
 
-export async function getIp(ip: string){
+export async function getIp(ipAdd: string){
   try {
-    const res = await axios.get<GetIpResponse>(`${API_URL}/${ip}`)
+    const res = await axios.get<GetIpResponse>(`${API_URL}ipAddress=${ipAdd}`)
+    console.log(res.data)
     return res.data
 
   } catch (error) {
