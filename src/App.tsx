@@ -1,16 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { getIp } from "./Api/api";
 
 import "./App.css";
+import { GetIpResponse } from "./types/types";
 
 function App() {
+  const [mapData, setMapData] = useState<GetIpResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("8.8.8.8");
+  const [error, setError] = useState(false);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    getIp()
-    console.log(process.env)
-  }
+  const getIpData = async () => {
+    try {
+      const data = (await getIp(searchInput)) as GetIpResponse;
+      if (data) setLoading(false);
+      console.log(data);
+      setMapData(data);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
+  };
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await getIpData();
+    console.log(mapData);
+    console.log("submit");
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getIpData();
+    };
+    // fetchData();
+    // eslint-disable-next-line
+  }, []);
+
+  if (loading) return <h1>"...loading"</h1>;
+  if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
     <>
@@ -26,7 +55,9 @@ function App() {
               className="input-field"
             />
             <button className="btn">
-              <HiOutlineChevronRight style={{fontSize: "25px", fontWeight: "bolder"}} />
+              <HiOutlineChevronRight
+                style={{ fontSize: "25px", fontWeight: "bolder" }}
+              />
             </button>
           </div>
         </form>
@@ -34,23 +65,21 @@ function App() {
         <div className="top__details-info">
           <div className="top__details-info-box">
             <p>IP Address</p>
-            <h2>192.212.174.101</h2>
+            <h2>{mapData?.ip}</h2>
           </div>
           <div className="top__details-info-box">
             <p>Location</p>
-            <h2>Brooklyn, NY 10001</h2>
+            <h2>{`${mapData?.location?.region}, ${mapData?.location?.country}`}</h2>
           </div>
           <div className="top__details-info-box">
             <p>Timezone</p>
-            <h2>UTC -5:00</h2>
+            <h2>{mapData?.location?.timezone}</h2>
           </div>
           <div className="top__details-info-box">
             <p>ISP</p>
-            <h2>SpaceX Starlink</h2>
+            <h2>{mapData?.isp}</h2>
           </div>
         </div>
-        
-
       </div>
       <div className="map__details"></div>
     </>
