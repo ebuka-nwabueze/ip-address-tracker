@@ -139,7 +139,6 @@ body{
   .top__details-info-box{
     text-align: left;
     position: relative;
-    /* flex: 1; */
   }
   .top__details-info-box:not(:first-child):after{
     content: "";
