@@ -1,11 +1,15 @@
 import React from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
+import { getIp } from "./Api/api";
+
 import "./App.css";
 
 function App() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    getIp()
+    console.log(process.env)
   }
 
   return (
