@@ -4,10 +4,11 @@ import { getIp } from "./Api/api";
 import Map from "./components/Map";
 import { GetIpResponse } from "./types/types";
 import "./App.css";
+import {Data} from "./data"
 
 
 function App() {
-  const [mapData, setMapData] = useState<GetIpResponse | null>(null);
+  const [mapData, setMapData] = useState<GetIpResponse | null>(Data);
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [error, setError] = useState(false);
@@ -41,12 +42,12 @@ function App() {
     const fetchData = async () => {
       await getIpData("");
     };
-    fetchData();
+    // fetchData();
     // eslint-disable-next-line
   }, []);
 
   // if (loading) return <h1>"...loading"</h1>
-  if (mapData === null || loading) return <h1>"...loading"</h1>
+  // if (mapData === null || loading) return <h1>"...loading"</h1>
   if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
@@ -92,7 +93,8 @@ function App() {
         </div>
       </div>
       <div className="map__details" id="map">
-        <Map geocodes={[mapData?.location.lat, mapData?.location.lng]}/>
+        {/* <Map geocodes={[mapData?.location?.lat, mapData?.location?.lng]}/> */}
+        <Map geocodes={[37.40599,37.40599]}/>
       </div>
     </>
   );

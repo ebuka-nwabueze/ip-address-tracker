@@ -11,6 +11,13 @@ const styles = {
   // marginTop: "25vh"
 };
 
+const icon: L.DivIcon = L.divIcon({
+  className: "mapIcon",
+  iconSize: [30, 30],
+  iconAnchor: [0, 0],
+  popupAnchor: [15, 0],
+});
+
 export interface GeoCodes {
   geocodes: L.LatLngExpression
 }
@@ -30,7 +37,7 @@ export default function Map({geocodes}: GeoCodes) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={geocodes}>
+        <Marker position={geocodes} icon={icon}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
