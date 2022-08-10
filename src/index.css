@@ -36,7 +36,7 @@ body{
 }
 
 .top__details{
-  height: 30vh;
+  height: 60vh;
   background-image: url("../public/assets/images/pattern-bg.png");
   object-fit: contain;
   background-size: cover;
@@ -50,6 +50,7 @@ body{
   gap: 1px;
   padding: 1.5rem 0rem;
   min-width: 200px;
+  /* margin-bottom: 50px; */
 }
 
 /* .input-form{
@@ -79,8 +80,8 @@ body{
 }
 
 .map__details{
-  height: 70vh;
-  background-color: pink;
+  /* height: 50vh; */
+  /* background-color: red; */
 }
 
 .btn{
@@ -109,6 +110,7 @@ body{
   align-items: center;
   gap: 30px;
   padding: 1rem 0rem;
+  z-index: 100;
 }
 
 .top__details-info-box{
@@ -151,6 +153,8 @@ body{
   .input-control{
     width: 400px;
   }
-  
+  .top__details{
+    height: 50vh;
+  }
 
 }

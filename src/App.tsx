@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { getIp } from "./Api/api";
-
-import "./App.css";
 import Map from "./components/Map";
 import { GetIpResponse } from "./types/types";
+import "./App.css";
+
 
 function App() {
   const [mapData, setMapData] = useState<GetIpResponse | null>(null);
@@ -26,16 +26,16 @@ function App() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true)
-    setMapData(null)
+    setLoading(true);
+    setMapData(null);
     await getIpData(searchInput);
     // console.log(mapData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    setSearchInput(e.target.value)
-  }
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -91,7 +91,6 @@ function App() {
         </div>
       </div>
       <div className="map__details" id="map">
-        
         <Map />
       </div>
     </>
