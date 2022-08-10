@@ -12,7 +12,7 @@ const styles = {
 
 const icon: L.DivIcon = L.divIcon({
   className: "mapIcon",
-  iconSize: [30, 30],
+  iconSize: [20, 20],
   iconAnchor: [0, 0],
   popupAnchor: [15, 0],
 });
