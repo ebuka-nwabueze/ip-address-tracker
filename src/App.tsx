@@ -43,7 +43,7 @@ function App() {
     const fetchData = async () => {
       await getIpData("");
     };
-    // fetchData();
+    fetchData();
     // eslint-disable-next-line
   }, []);
 
