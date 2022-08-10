@@ -65,6 +65,7 @@ function App() {
               className="input-field"
               onChange={handleChange}
               value={"" || searchInput}
+              placeholder="search for any IP address or domain "
             />
             <button className="btn">
               <HiOutlineChevronRight
