@@ -16,8 +16,8 @@ function App() {
     try {
       const data = (await getIp(searchString)) as GetIpResponse;
       if (data) setLoading(false);
-      // console.log(data);
       setMapData(data);
+      console.log(mapData);
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -26,8 +26,8 @@ function App() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     setMapData(null);
+    setLoading(true);
     await getIpData(searchInput);
     // console.log(mapData);
   };
@@ -41,11 +41,12 @@ function App() {
     const fetchData = async () => {
       await getIpData("");
     };
-    // fetchData();
+    fetchData();
     // eslint-disable-next-line
   }, []);
 
-  // if (loading) return <h1>"...loading"</h1>;c
+  // if (loading) return <h1>"...loading"</h1>
+  if (mapData === null || loading) return <h1>"...loading"</h1>
   if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
@@ -91,7 +92,7 @@ function App() {
         </div>
       </div>
       <div className="map__details" id="map">
-        <Map />
+        <Map geocodes={[mapData?.location.lat, mapData?.location.lng]}/>
       </div>
     </>
   );
