@@ -92,10 +92,10 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="map__details" id="map">
-        {/* <Map geocodes={[mapData?.location?.lat, mapData?.location?.lng]}/> */}
         <Map geocodes={[37.40599,37.40599]}/>
-      </div>
+ 
+        {/* <Map geocodes={[mapData?.location?.lat, mapData?.location?.lng]}/> */}
+   
     </>
   );
 }

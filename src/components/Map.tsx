@@ -5,8 +5,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-shadow.png";
 
 const styles = {
-  // minHeight: "40vh",
-  height: "400px",
+  height: "60vh",
   width: "50wh",
   // marginTop: "25vh"
 };
@@ -30,7 +29,7 @@ export default function Map({geocodes}: GeoCodes) {
         center={geocodes}
         zoom={13}
         scrollWheelZoom={false}
-        style={styles}
+        // style={styles}
         id="mapid"
       >
         <TileLayer

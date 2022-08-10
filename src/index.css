@@ -36,7 +36,7 @@ body{
 }
 
 .top__details{
-  height: 60vh;
+  height: 30vh;
   background-image: url("../public/assets/images/pattern-bg.png");
   object-fit: contain;
   background-size: cover;
@@ -85,7 +85,8 @@ body{
 }
 
 #mapid{
-  height: 10px;
+  height: 70vh;
+  width: 50wh;
 }
 
 /* .mapIcon {
@@ -126,7 +127,7 @@ body{
   align-items: center;
   gap: 30px;
   padding: 1rem 0rem;
-  z-index: 100;
+  z-index: 10000000;
 }
 
 .top__details-info-box{
@@ -170,7 +171,12 @@ body{
     width: 400px;
   }
   .top__details{
-    height: 50vh;
+    height: 25vh;
   }
+  #mapid{
+    height: 75vh;
+    width: 50wh;
+  }
+  
 
 }
