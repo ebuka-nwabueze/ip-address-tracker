@@ -2,7 +2,12 @@
 interface Location {
   country: string,
   region: string,
-  timezone: string
+  timezone: string,
+  city: string,
+  lat: number,
+  lng: number,
+  postalCode: string,
+  geonameId: string
 }
 
 interface AS {
@@ -20,3 +25,4 @@ export interface GetIpResponse {
   as: AS,
   isp: string
 }
+

@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { getIp } from "./Api/api";
-
-import "./App.css";
+import Map from "./components/Map";
 import { GetIpResponse } from "./types/types";
+import "./App.css";
+import {Data} from "./data"
+
 
 function App() {
-  const [mapData, setMapData] = useState<GetIpResponse | null>(null);
+  const [mapData, setMapData] = useState<GetIpResponse | null>(Data);
   const [loading, setLoading] = useState(true);
-  const [searchInput, setSearchInput] = useState("8.8.8.8");
+  const [searchInput, setSearchInput] = useState("");
   const [error, setError] = useState(false);
 
-  const getIpData = async () => {
+  const getIpData = async (searchString: string) => {
     try {
-      const data = (await getIp(searchInput)) as GetIpResponse;
+      const data = (await getIp(searchString)) as GetIpResponse;
       if (data) setLoading(false);
-      console.log(data);
       setMapData(data);
+      console.log(mapData);
     } catch (error) {
       setError(true);
       setLoading(false);
@@ -25,20 +27,27 @@ function App() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await getIpData();
-    console.log(mapData);
-    console.log("submit");
+    setMapData(null);
+    setLoading(true);
+    await getIpData(searchInput);
+    // console.log(mapData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-      await getIpData();
+      await getIpData("");
     };
     // fetchData();
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <h1>"...loading"</h1>;
+  // if (loading) return <h1>"...loading"</h1>
+  // if (mapData === null || loading) return <h1>"...loading"</h1>
   if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
@@ -53,6 +62,8 @@ function App() {
               id="input"
               name="input"
               className="input-field"
+              onChange={handleChange}
+              value={"" || searchInput}
             />
             <button className="btn">
               <HiOutlineChevronRight
@@ -81,7 +92,10 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="map__details"></div>
+        <Map geocodes={[37.40599,37.40599]}/>
+ 
+        {/* <Map geocodes={[mapData?.location?.lat, mapData?.location?.lng]}/> */}
+   
     </>
   );
 }

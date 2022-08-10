@@ -3,13 +3,15 @@ import { GetIpResponse } from "../types/types"
 
 const API_KEY = process.env.REACT_APP_MAP_API_KEY as string
 
-const API_URL = `https://geo.ipify.org/api/v2/country?apiKey=${API_KEY}&`
+const API_URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&`
 
 
 
-export async function getIp(ip: string){
+
+export async function getIp(ipAdd: string){
   try {
-    const res = await axios.get<GetIpResponse>(`${API_URL}/${ip}`)
+    const res = await axios.get<GetIpResponse>(`${API_URL}ipAddress=${ipAdd}`)
+    // console.log(res.data)
     return res.data
 
   } catch (error) {
