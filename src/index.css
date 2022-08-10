@@ -21,7 +21,8 @@ code {
 }
 
 :root{
-  --ash: #918d8d
+  --ash: #918d8d;
+  --primary: #346da7;
 }
 
 body{
@@ -145,6 +146,37 @@ body{
   font-size: 1.2rem;
 }
 
+.spinnerContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #cac7c780;
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-radius: 50%;
+  border-color: var(--primary) transparent var(--primary) transparent;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media(min-width:769px){
   .top__details-info{
     width: 800px;
@@ -178,5 +210,4 @@ body{
     width: 50wh;
   }
   
-
 }
