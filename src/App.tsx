@@ -3,6 +3,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { getIp } from "./Api/api";
 
 import "./App.css";
+import Map from "./components/Map";
 import { GetIpResponse } from "./types/types";
 
 function App() {
@@ -29,7 +30,6 @@ function App() {
     setMapData(null)
     await getIpData(searchInput);
     // console.log(mapData);
-
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +45,7 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  if (loading) return <h1>"...loading"</h1>;
+  // if (loading) return <h1>"...loading"</h1>;c
   if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
@@ -90,7 +90,10 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="map__details"></div>
+      <div className="map__details" id="map">
+        
+        <Map />
+      </div>
     </>
   );
 }
