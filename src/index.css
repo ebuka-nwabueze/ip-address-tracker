@@ -86,10 +86,6 @@ input::placeholder{
   cursor: pointer;
 }
 
-.map__details{
-  /* height: 50vh; */
-  /* background-color: red; */
-}
 
 #mapid{
   height: 70vh;

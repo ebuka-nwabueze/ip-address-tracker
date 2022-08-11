@@ -46,9 +46,8 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  // if (loading) return <h1>"...loading"</h1>
   if (mapData === null || loading) return <Spinner />
-  if (error) return <h1 style={{ color: "red" }}>"...error occured"</h1>;
+  if (error) return <h1  className="spinnerContainer" style={{ color: "red" }}>"...error occured"</h1>;
 
   return (
     <>

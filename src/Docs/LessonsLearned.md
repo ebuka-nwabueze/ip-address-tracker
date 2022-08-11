@@ -23,7 +23,8 @@
 
 ```
 
-- 
+- The Map info section 
+
 ```html
 
 ```
