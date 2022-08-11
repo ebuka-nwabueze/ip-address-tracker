@@ -4,7 +4,6 @@ import { getIp } from "./Api/api";
 import Map from "./components/Map";
 import { GetIpResponse } from "./types/types";
 import "./App.css";
-import {Data} from "./data"
 import Spinner from "./components/Spinner";
 
 

@@ -17,7 +17,7 @@
   }
 ```
 
-- 
+- When using the geolocation API, if you pass a wrong url parameter e.g API key or IP address during the get request. You return  the infomation of the current client.
 
 ```css
 
