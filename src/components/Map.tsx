@@ -1,18 +1,13 @@
-import React from "react";
+
 import L from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-shadow.png";
 
-const styles = {
-  height: "60vh",
-  width: "50wh",
-  // marginTop: "25vh"
-};
 
 const icon: L.DivIcon = L.divIcon({
   className: "mapIcon",
-  iconSize: [30, 30],
+  iconSize: [20, 20],
   iconAnchor: [0, 0],
   popupAnchor: [15, 0],
 });
@@ -29,7 +24,6 @@ export default function Map({geocodes}: GeoCodes) {
         center={geocodes}
         zoom={13}
         scrollWheelZoom={false}
-        // style={styles}
         id="mapid"
       >
         <TileLayer
