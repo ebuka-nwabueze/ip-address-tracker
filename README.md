@@ -9,6 +9,7 @@ This is a solution to the [IP address tracker challenge on Frontend Mentor](http
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
+  - [Technical Documentation](#technical-documentation)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -39,48 +40,19 @@ Desktop
 
 - Typescript
 - React
+- LeafletMap & Geolocation API
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
 
-### What I learned
 
-- The demarcation seen in between the map info is placed with the ::after pseudo class. Firstly each flex item(top__details-info-box) is postioned relative. Next, the pseudo class is placed in absolute from the flex item with a border leaving out the first child element.
+## What i learned
 
-```css
-  .top__details-info-box{
-    text-align: left;
-    position: relative;
-  }
-  .top__details-info-box:not(:first-child):after{
-    content: "";
-    border: 0.3px solid var(--ash);
-    height:40px;
-    position: absolute;
-    left: -20px;
-    top: 8px;
-  }
-```
+More on lessons learned can be found [here](./src/docs/lessonslearned.md)
 
-- 
+## Technical Documentation
 
-```css
-
-```
-
-- 
-```html
-
-```
-```js
-
-```
-
-
-- 
-```ts
-
-```
+Technical information can be found [here](./src/docs/lessonslearned.md)
 
 ## Author
 
